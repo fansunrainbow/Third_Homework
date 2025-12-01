@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>混合聊天应用</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- 登录界面 -->
+        <div id="login-container" class="login-container">
+            <h1>欢迎使用混合聊天应用</h1>
+            <div class="login-form">
+                <label for="userId">请输入您的用户ID：</label>
+                <input type="text" id="userId" placeholder="输入用户ID" required>
+                <button id="login-btn">登录</button>
+            </div>
+        </div>
+
+        <!-- 聊天界面 -->
+        <div id="chat-app" class="chat-app hidden">
+            <!-- 顶部信息栏 -->
+            <div class="chat-header">
+                <h2>混合聊天应用</h2>
+                <div class="user-info">
+                    <span>当前用户：</span>
+                    <span id="current-user"></span>
+                    <button id="logout-btn">退出</button>
+                </div>
+            </div>
+            
+            <div class="chat-content">
+                <!-- 侧边栏 -->
+                <div class="chat-sidebar">
+                    <!-- 聊天类型选择 -->
+                    <div id="chat-types">
+                        <button id="toggle-all-chat" class="chat-type-btn active">群聊</button>
+                        <button id="toggle-private-chat" class="chat-type-btn">私信</button>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>在线用户</h3>
+                        <ul id="user-list"></ul>
+                    </div>
+                    
+                    <!-- 群组区域 -->
+                    <div class="sidebar-section">
+                        <h3>群组</h3>
+                        <div class="group-actions">
+                            <input type="text" id="group-name" placeholder="群组名称">
+                            <button id="create-group-btn" class="group-action-btn">创建群组</button>
+                            <input type="text" id="join-group-id" placeholder="群组ID">
+                            <button id="join-group-btn" class="group-action-btn">加入群组</button>
+                        </div>
+                        <div id="groups-list">
+                            <!-- 群组列表将动态生成 -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-main">
+                    <!-- 聊天内容区域 -->
+                    <div class="chat-title">
+                        <h2 id="chat-title">广播聊天</h2>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="system-message">请输入消息并发送...</div>
+                    </div>
+
+                    <!-- 输入区域 -->
+                    <div class="chat-input-area">
+                        <div id="input-toolbar">
+                            <div class="message-type-selector">
+                                <label><input type="radio" name="messageType" value="broadcast" checked> 广播消息</label>
+                                <label><input type="radio" name="messageType" value="private"> 私信消息</label>
+                                <label><input type="radio" name="messageType" value="group"> 群组消息</label>
+                            </div>
+                            <div class="private-message-container hidden">
+                                <input type="text" id="private-recipient" placeholder="接收者ID">
+                            </div>
+                            <div class="group-message-container hidden">
+                                <input type="text" id="group-recipient" placeholder="群组ID">
+                            </div>
+                            <input type="file" id="file-upload" accept="image/*,video/*,audio/*,application/pdf">
+                            <label for="file-upload" class="file-upload-btn">📎 选择文件</label>
+                        </div>
+                        <input type="text" id="message-input" placeholder="输入消息..." autocomplete="off">
+                        <div id="input-actions">
+                            <button id="send-btn">发送</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chat.js"></script>
+</body>
+</html>
